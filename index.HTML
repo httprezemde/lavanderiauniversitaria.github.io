@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia Universitária Barão Geraldo</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/9X7ZKfE.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(245, 240, 232, 0.85);
+            backdrop-filter: blur(3px);
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            background: rgba(75, 163, 158, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200'%3E%3Cpath d='M0,100 Q20,80 40,100 T80,100 T120,100 T160,100 T200,100 T240,100 T280,100 T320,100 T360,100 T400,100 T440,100 T480,100 T520,100 T560,100 T600,100 T640,100 T680,100 T720,100 T760,100 T800,100' stroke='%23ffffff' fill='none' stroke-width='4' opacity='0.2'/%3E%3Cpath d='M0,120 Q20,100 40,120 T80,120 T120,120 T160,120 T200,120 T240,120 T280,120 T320,120 T360,120 T400,120 T440,120 T480,120 T520,120 T560,120 T600,120 T640,120 T680,120 T720,120 T760,120 T800,120' stroke='%23ffffff' fill='none' stroke-width='3' opacity='0.15'/%3E%3C/svg%3E") repeat-x;
+            opacity: 0.3;
+        }
+
+        .logo {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid rgba(38, 106, 103, 0.3);
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            min-width: 90px;
+            position: relative;
+            z-index: 10;
+            line-height: 1.3;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 5px;
+            background: #4ba39e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        nav a:nth-child(2) {
+            border-bottom: 3px solid white;
+            padding-bottom: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: rgba(75, 163, 158, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 60px 50px;
+            margin: 30px 50px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cdefs%3E%3Cpattern id='waves' x='0' y='0' width='120' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0,40 Q15,25 30,40 T60,40 T90,40 T120,40' stroke='%23266a67' fill='none' stroke-width='3'/%3E%3Cpath d='M0,55 Q15,40 30,55 T60,55 T90,55 T120,55' stroke='%23266a67' fill='none' stroke-width='2'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='1200' height='400' fill='url(%23waves)'/%3E%3C/svg%3E") repeat;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: #e17a5f;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Decorative elements */
+        .lotus {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #ff7b6d;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(45deg);
+        }
+
+        .lotus::before,
+        .lotus::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #ff7b6d;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .lotus::before {
+            transform: rotate(-90deg);
+        }
+
+        .lotus::after {
+            transform: rotate(90deg);
+        }
+
+        .lotus-1 { top: 20px; left: 15%; }
+        .lotus-2 { top: 40%; right: 10%; }
+        .lotus-3 { bottom: 20px; left: 20%; }
+
+        /* Services Section */
+        .services {
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .services h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            max-width: 1200px;
+            position: relative;
+            background: rgba(75, 163, 158, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card {
+            background: rgba(245, 240, 232, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 280px;
+            border: 1px solid rgba(38, 106, 103, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: #5ab3ae;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .tagline {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(75, 163, 158, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px 50px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .whatsapp-icon {
+            width: 80px;
+            height: 80px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .contact-details h3 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            justify-content: flex-end;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ba39e;
+            font-size: 20px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                margin: 20px;
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .services-container {
+                padding: 30px 10px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .footer-right {
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Ukiyo-e Canvas Effect */
+        #ukiyo-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: multiply;
+            opacity: 0.06;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="ukiyo-canvas"></canvas>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🧺</div>
+            LAVANDERIA<br>UNIVERSITÁRIA
+        </div>
+        <nav>
+            <a href="#inicio">INÍCIO</a>
+            <a href="#servicos">SERVIÇOS</a>
+            <a href="#servicos2">SERVIÇOS</a>
+            <a href="#contato">CONTATO</a>
+            <a href="#sobre">SOBRE</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="lotus lotus-1"></div>
+        <div class="lotus lotus-2"></div>
+        <div class="lotus lotus-3"></div>
+        <div class="hero-content">
+            <h1>Lavanderia Universitária<br>Barão Geraldo</h1>
+            <p>A praticidad que seu tempo merce.</p>
+            <a href="https://wa.me/5519998133271?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento" target="_blank" class="cta-button">Peça Agora!</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>Nossos Serviços</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Lavagem e Passagem de Roupas</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👔</div>
+                <h3>Lavagem a Seco</h3>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛏️</div>
+                <h3>Roupas de Cama</h3>
+            </div>
+        </div>
+        <p class="tagline">Seu ponto de apoio em Barão Geraldo.</p>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <div class="whatsapp-icon">📱</div>
+            <div class="contact-details">
+                <h3>(19) 99813-3271</h3>
+				<h3>(19) 99730-1999</h3>
+                <p>Local: Barão Geraldo | Aberto até 16h</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/lavanderia_barao019/" target="_blank" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="copyright">© 2024 Lavanderia Universitária.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Ukiyo-e texture effect
+        const canvas = document.getElementById('ukiyo-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawUkiyoTexture();
+        }
+
+        function drawUkiyoTexture() {
+            // Create paper texture effect
+            const imageData = ctx.createImageData(canvas.width, canvas.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const noise = Math.random() * 30;
+                data[i] = noise;     // R
+                data[i + 1] = noise; // G
+                data[i + 2] = noise; // B
+                data[i + 3] = 255;   // A
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+
+            // Add woodblock print lines
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.03)';
+            ctx.lineWidth = 0.5;
+
+            for (let y = 0; y < canvas.height; y += 3) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                
+                // Create wavy lines like woodblock prints
+                for (let x = 0; x < canvas.width; x += 10) {
+                    const wave = Math.sin(x * 0.01 + y * 0.02) * 0.5;
+                    ctx.lineTo(x, y + wave);
+                }
+                
+                ctx.stroke();
+            }
+
+            // Add vertical grain
+            for (let x = 0; x < canvas.width; x += 50 + Math.random() * 30) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.strokeStyle = `rgba(38, 106, 103, ${0.02 + Math.random() * 0.03})`;
+                ctx.lineWidth = 1 + Math.random();
+                ctx.stroke();
+            }
+
+            // Add subtle circular patterns (like water ripples in ukiyo-e)
+            for (let i = 0; i < 8; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = 50 + Math.random() * 100;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(75, 163, 158, 0.02)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Parallax effect on scroll
+        let scrollY = 0;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            const lotus = document.querySelectorAll('.lotus');
+            lotus.forEach((l, i) => {
+                const speed = 0.3 + (i * 0.1);
+                l.style.transform = `rotate(45deg) translateY(${scrollY * speed}px)`;
+            });
+        });
+
+        // Hover effect on service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotate(1deg)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotate(0)';
+            });
+        });
+
+        // Wave animation on hero section
+        const hero = document.querySelector('.hero');
+        let waveOffset = 0;
+        
+        function animateWaves() {
+            waveOffset += 0.5;
+            hero.style.backgroundPosition = `${waveOffset}px 0`;
+            requestAnimationFrame(animateWaves);
+        }
+        animateWaves();
+    </script>
+</body>
+</html>
